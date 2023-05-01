@@ -1,4 +1,4 @@
-const shortHands = {
+export const shortHands = {
   g: "generate",
   i: "install",
   r: "run",

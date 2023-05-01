@@ -1,11 +1,13 @@
 import figlet from "figlet";
+import { common } from "../config";
 
 const sayHello = async () => {
-  figlet("      9 swords\n----------", (err, data) => {
+  figlet(`      ${common.name}\n----------`, (err, data) => {
     if (err) {
       return;
     }
     console.log(data);
+    console.log(`         Author: ${common.author}`);
   });
 };
 
