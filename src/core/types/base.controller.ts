@@ -1,5 +1,10 @@
+export interface Options {
+  params: Record<string, any>;
+  config: Record<string, any>;
+}
+
 abstract class BaseController {
-  abstract run(): any;
+  abstract run(options: Options): any;
 }
 
 export { BaseController };

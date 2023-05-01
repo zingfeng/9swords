@@ -13,19 +13,12 @@ const getModule = (moduleName: string) => {
   )[0];
 };
 
-function processing(
-  moduleName: string,
-  config: Record<string, any>,
-  params: Record<string, any>
-) {
+function processing(moduleName: string) {
   const module = getModule(moduleName);
   if (module) {
     const m = new module();
     (m as any) // https://github.com/Microsoft/TypeScript/issues/4881
-      .run({
-        params,
-        config,
-      });
+      .run();
   } else {
     console.log("Module not found");
     // processing help
@@ -33,15 +26,15 @@ function processing(
 }
 
 export const bootstrap = async () => {
-  await sayHello();
+  await sayHello(() => {
+    const args = process.argv;
+    const { isValid, moduleName } = route(args);
 
-  const args = process.argv;
-  const { isValid, moduleName, config, params } = route(args);
-
-  if (isValid) {
-    processing(moduleName, config, params);
-  } else {
-    console.log("Invalid command");
-    // processing help
-  }
+    if (isValid) {
+      processing(moduleName);
+    } else {
+      console.log("Invalid command");
+      // processing help
+    }
+  });
 };
