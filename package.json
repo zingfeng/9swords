@@ -1,18 +1,28 @@
 {
   "name": "9swords",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "zingfeng's sword collection",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "bin": {
-    "tic": "./index.js"
+    "tic": "./dist/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
+  "files": [
+    "/dist/**",
+    "package.json",
+    "README.md"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@inquirer/prompts": "^1.0.0",
+    "commander": "^10.0.1",
     "figlet": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/figlet": "^1.5.6"
   }
 }
